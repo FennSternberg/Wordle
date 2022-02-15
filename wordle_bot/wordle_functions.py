@@ -67,7 +67,6 @@ def loop_through_games(first_guess, data, no_of_games):
     blockPrint()
     scores = [''] * no_of_games
     for i in range(no_of_games):
-
         scores[i] = make_guess(first_guess, data['word'][i], data, 0)
         if i % 100 == 0:
             enablePrint()
@@ -76,7 +75,22 @@ def loop_through_games(first_guess, data, no_of_games):
             print('Current Mean Score: ' + str(sum(scores[:i + 1]) / (i + 1)))
             blockPrint()
     enablePrint()
-    return scores
+    # save
+    textfile = open("results/possible_" + first_guess + "_results.txt", "w")
+    for element in scores:
+        textfile.write(str(element) + "\n")
+    textfile.close()
+    return
+
+
+def loop_through_first_words(data, number_of_trials):
+    for i in range(number_of_trials):
+        first_guess = data['word'][i]
+        print("--------------------------------------------")
+        print("First word: " + first_guess)
+        loop_through_games(first_guess, data, len(data['word']))
+
+    return
 
 
 def read_database():

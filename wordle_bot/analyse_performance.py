@@ -24,8 +24,8 @@ class Results:
         plt.xlabel("'true word' usage rank")
         plt.ylabel('Number of guesses')
         plt.plot(y)
-        plt.plot(self.mean * np.ones(len(self.scores)),color='black')
-        plt.text(2, self.mean+0.03, 'total mean = ' + str(np.round(self.mean,2)))
+        plt.plot(self.mean * np.ones(len(self.scores)), color='black')
+        plt.text(2, self.mean + 0.03, 'total mean = ' + str(np.round(self.mean, 2)))
         return
 
     def plot_freq_dist(self):
@@ -55,4 +55,5 @@ def find_losers(scores, dictionary):
 
 
 fwd = Results('fwd_crane_results.txt', 'five_word_dictionary.csv')  # results of game with five word dictionary database
-pos = Results('possible_crane_results.txt','possible_dictionary.csv')
+pos_crane = Results('possible_crane_results.txt', 'possible_dictionary.csv')
+pos_salet = Results('possible_salet_results.txt', 'possible_dictionary.csv')
